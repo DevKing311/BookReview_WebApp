@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section class="news">
+    <div class="container">
+
+        <div class="news-card details-card">
+
+            <!-- WIDE IMAGE -->
+            <div class="details-image" style="width:100%; height:400px; overflow:hidden;">
+                <img src="{{ bookz.book_cover.url }}" alt="{{ bookz.title }}"
+                    style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <!-- CONTENT UNDER IMAGE -->
+            <div class="details-content">
+                <h2>{{ bookz.title }}</h2>
+                <p>{{ bookz.Summary }}</p>
+                <p><b>Genre:</b> {{ bookz.genre }}</p>
+                <p><b>Price:</b> ${{ bookz.price }}</p>
+                <p><b>Writer:</b> {{ bookz.writer }}</p>
+
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews">
+    <h3 class="reviews-title">Customer Reviews</h3>
+
+    {% for review in book_reviews %}
+    <div class="review-card">
+        <div class="review-header">
+            <span class="reviewer">{{ review.name }}</span>
+            <span class="rating">{{ review.rating }}⭐</span>
+        </div>
+
+        <p class="comment">
+            {{ review.comment }}
+        </p>
+
+        <small class="date">{{ review.created_at  }}</small>
+    </div>
+     {% endfor %}
+   
+
+    
+</section>
+
+<section class="review-section">
+    <div class="container"> <!-- This container aligns it with the card above -->
+        
+        <div class="review-box">
+            <h3>Leave a Review</h3>
+
+            <form method="POST" style="width:100%">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <select name="rating" required>
+                        <option value="">Rate this book</option>
+                        <option value="5">⭐⭐⭐⭐⭐(5)</option>
+                        <option value="4">⭐⭐⭐⭐(4)</option>
+                        <option value="3">⭐⭐⭐(3)</option>
+                        <option value="2">⭐⭐(2)</option>
+                        <option value="1">⭐(1)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="comment" rows="5" placeholder="Write review..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Submit Review</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+{% endblock content %}

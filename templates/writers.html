@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Writers   {% endblock title %}
+{% block content %}
+
+<div class="table-container">
+  <table class="custom-table">
+    
+    <thead>
+      <tr>
+        <th>Images</th>
+        <th>Names</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for writer in writers %}
+      <tr>
+        <td>
+          <img src="{{ writer.profile_pic.url }}" alt="" class="writer-img">
+        </td> 
+        <td>{{ writer.name }}</td>
+        <td>{{ writer.gender }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+</div>
+
+{% endblock %}
+

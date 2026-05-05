@@ -1,0 +1,147 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content  %}
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div class="hero-text">
+            <h1>Best Books of the Month</h1>
+            <p>
+                Discover hand-picked titles, new releases and timeless classics
+                curated by our editors.
+            </p>
+
+            <button class="btn"><a href="{% url 'book_link' %}">Browse Books</a></button>
+
+            <div class="hero-dots">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- gradient visual block -->
+        <div class="hero-visual">
+            
+            {% if random_book.book_cover %}
+            <a href="{% url 'book-detail' random_book.id %}">
+                <img src="{{ random_book.book_cover.url }}" style="width:100%; height:100%; border-radius:10px ;" alt="">
+            </a>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= FEATURE STRIP ================= -->
+<section class="features">
+    <div class="container features-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <div>
+                <h3>Editorial Picks</h3>
+                <p>Curated stories and weekly highlights.</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <div>
+                <h3>New Releases</h3>
+                <p>Explore our newest book collections.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= ABOUT / SIDE INFO ================= -->
+<section class="about">
+    <div class="container about-grid">
+
+        <div class="about-left">
+            <div class="about-visual">
+             <img src="{% static 'images/static.png' %}" style="width: 100%; height: 100%; border-radius: 10px;" alt="">
+                
+            </div>
+
+            <h2>About Us</h2>
+            <p>
+                We connect readers with the best books from around the world.
+                Discover stories that inspire, educate and entertain.
+            </p>
+
+            <a href="#" class="btn">More About Us</a>
+        </div>
+
+        <div class="about-right">
+
+            <div class="info-card">
+                <h3>Our Vision</h3>
+                <p>Inspiring readers and building a global reading culture.</p>
+                <a href="#">More →</a>
+            </div>
+
+            <div class="info-card">
+                <h3>Our Mission</h3>
+                <p>Helping people discover books they love every day.</p>
+                <a href="#">More →</a>
+            </div>
+
+            <div class="info-card">
+                <h3>New Projects</h3>
+                <p>Exciting initiatives and events coming soon.</p>
+                <a href="#">More →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= NEWS ================= -->
+<section class="news">
+    <div class="container">
+        <h2>News & Events</h2>
+
+        <div class="news-grid">
+{% for news in top_two_news %}
+            <div class="news-card">
+                <div class="news-visual">
+                    <img src="{{news.cover.url }}" style="width: 100%;height: 100%;border-radius: 10px;" alt="">
+                </div>
+                <h4>{{ news.news_title }}</h4>
+                <p>{{ news.news_content|truncatewords:'15' }}</p>
+                
+                <a href="#" class="btn">Readmore</a>
+            </div>
+
+    {% endfor %}
+            <div class="follow-card">
+                <h3>Follow Us</h3>
+                <p>Stay connected on social media.</p>
+
+                <div class="social-icons">
+                    <a href="#">Fb</a>
+                    <a href="#">Tw</a>
+                    <a href="#">Ig</a>
+                    <a href="#">Yt</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock content  %}
+
+
+
+</body>
+</html>

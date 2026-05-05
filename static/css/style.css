@@ -1,0 +1,520 @@
+/* =========================
+   RESET + VARIABLES
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#7b2c2c;
+    --primary-light:#a44a4a;
+    --dark:#222;
+    --text:#555;
+    --light:#f6f3ef;
+    --white:#fff;
+
+    --gradient-main:linear-gradient(135deg,#7b2c2c,#c98b6b);
+    --gradient-soft:linear-gradient(135deg,#f2e7df,#e4d5c7);
+    --gradient-dark:linear-gradient(135deg,#2b2b2b,#4b4b4b);
+}
+
+body{
+    font-family:"Segoe UI",sans-serif;
+    background:var(--light);
+    color:var(--dark);
+    line-height:1.6;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+a{text-decoration:none;color:inherit;}
+img{width:100%;}
+.btn{
+    display:inline-block;
+    padding:12px 20px;
+    background:var(--gradient-main);
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.header{
+    background:white;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav-wrapper{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    font-weight:600;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    padding:80px 0;
+    background:var(--gradient-soft);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.hero-text h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero-text p{
+    color:var(--text);
+    margin-bottom:20px;
+}
+
+/* gradient visual block */
+.hero-visual{
+    height:350px;
+    border-radius:12px;
+    background:var(--gradient-main);
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.hero-dots span{
+    width:10px;
+    height:10px;
+    background:var(--primary);
+    display:inline-block;
+    border-radius:50%;
+    margin-right:6px;
+    margin-top:20px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+.features{
+    padding:40px 0;
+}
+
+.features-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.feature-card{
+    display:flex;
+    gap:18px;
+    padding:25px;
+    color:white;
+    background:var(--gradient-dark);
+}
+
+.feature-icon{
+    width:60px;
+    height:60px;
+    border-radius:10px;
+    background:var(--gradient-main);
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about{
+    padding:70px 0;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+}
+
+.about-visual{
+    height:200px;
+    border-radius:10px;
+    background:var(--gradient-soft);
+    margin-bottom:20px;
+}
+
+.info-card{
+    background:white;
+    padding:22px;
+    margin-bottom:20px;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.06);
+}
+
+/* =========================
+   NEWS
+========================= */
+.news{
+    padding:70px 0;
+}
+
+.news h2{
+    margin-bottom:30px;
+}
+
+.news-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:25px;
+}
+
+.news-card{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.news-visual{
+    height:150px;
+    border-radius:8px;
+    background:var(--gradient-main);
+    margin-bottom:15px;
+}
+
+.follow-card{
+    background:var(--gradient-soft);
+    padding:25px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.social-icons a{
+    display:inline-block;
+    margin:10px 6px;
+    padding:8px 12px;
+    background:white;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+    background:var(--gradient-main);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* tablet */
+@media(max-width:900px){
+    .hero-grid,
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+/* mobile */
+@media(max-width:600px){
+
+    .menu-toggle{display:block;}
+
+    .nav-links{
+        position:absolute;
+        right:0;
+        top:70px;
+        flex-direction:column;
+        background:white;
+        padding:20px;
+        width:200px;
+        display:none;
+        box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.show{display:flex;}
+
+    .hero-text h1{font-size:32px;}
+
+    .news-grid{
+        grid-template-columns:1fr;
+    }
+}
+/* =========================
+   RESPONSIVE CARD IMAGES
+========================= */
+
+.card-image{
+    width:100%;
+    height:180px;
+    border-radius:8px;
+    overflow:hidden;
+    background:var(--gradient-main); /* fallback if no image */
+    margin-bottom:15px;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+
+
+
+.table-container{
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+/* Main table card */
+.custom-table{
+  width: 92%;
+  max-width: 1100px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.custom-table thead{
+  background: var(--gradient-main);
+  color: var(--white);
+}
+
+.custom-table th{
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Body cells */
+.custom-table td{
+  padding: 16px 18px;
+  color: var(--text);
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Remove harsh grid lines, use soft row separation */
+.custom-table tr:last-child td{
+  border-bottom: none;
+}
+
+/* Modern hover (lift effect instead of block color) */
+.custom-table tbody tr{
+  transition: all 0.25s ease;
+}
+
+.custom-table tbody tr:hover{
+  background: #faf7f5;
+  transform: translateY(-1px);
+}
+
+/* Subtle first column emphasis */
+.custom-table td:first-child{
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Responsive feel */
+@media (max-width: 768px){
+  .custom-table{
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .custom-table th,
+  .custom-table td{
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+.custom-table td img.writer-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* =========================
+   REVIEW SECTION (MATCHING POST WIDTH)
+========================= */
+/* Ensure the review section fills the space */
+.review-section {
+    padding: 40px 0 80px 0; 
+    background: var(--light);
+    width: 100%;
+}
+
+/* Force the box to be full width of the container */
+.review-box {
+    background: var(--white);
+    padding: 40px; /* Increased padding for a premium feel */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%; 
+    margin: 0 auto; /* Keeps it centered */
+}
+
+/* IMPORTANT: Ensure the form itself stretches */
+.review-box form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make form groups take full horizontal space */
+.review-box .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* This is the key: Force all inputs to 100% of the parent width */
+.review-box input, 
+.review-box select, 
+.review-box textarea {
+    width: 100% !important; /* Forces it to ignore inherited widths */
+    max-width: 100%;
+    display: block;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding doesn't add to the width */
+}
+
+.review-box .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100% !important; /* Forces it to ignore inherited widths */
+    max-width: 100%;
+    display: block;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding doesn't add to the width */
+}
+
+.review-box .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+
+/* REVIEWS SECTION */
+.reviews {
+    margin: 40px 0;
+}
+
+.reviews h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* REVIEW CARD */
+.review-card {
+    background: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* HEADER */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.reviewer {
+    font-weight: 600;
+    color: #333;
+}
+
+.rating {
+    color: #f4b400;
+    font-weight: 600;
+}
+
+/* COMMENT */
+.comment {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* DATE */
+.date {
+    font-size: 12px;
+    color: #999;
+}

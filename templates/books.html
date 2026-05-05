@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} View all books  {% endblock title %}
+{% block content  %}
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Our Books</h1>
+        <p>Browse our collection of best sellers and new releases.</p>
+    </div>
+</section>
+
+<!-- BOOK GRID -->
+<section class="news">
+    <div class="container">
+        <form action="">
+            <input type="text" name ="book_title" value="{{ request.GET.book_title }}" placeholder="Enter book title">
+            <button>search</button>
+        </form>
+        <div class="news-grid">
+             {% for book in bookss %}
+            <div class="news-card">
+                <div class="card-image"><img src="{{ book.book_cover.url }}" alt="book"></div>
+                <h3>{{ book.title}}</h3>
+                <p>{{ book.Summary|truncatewords:"15" }}</p>
+                <p> <b>Genre:</b> {{ book.genre}}</p>     
+                <a href="{% url 'book-detail' book.id %}" class="btn">View Book</a>
+
+            </div>
+            {% empty %}
+            <div>There are no book</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content  %}
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
