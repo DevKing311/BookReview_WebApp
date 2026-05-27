@@ -90,13 +90,6 @@ def Register(request):
 
          messages.success(request, f"Account created successfully! Username: {username}")
          return redirect('login')
-
-        
-
-
-        
-   
-    
     return render(request,'register.html')
 def signout(request):
 
