@@ -12,7 +12,7 @@ def index(request):
     all_books = Books.objects.all()
     top_two_news = NewsAndEvent.objects.order_by('created_at')[:2]
     #normal python slicing to get the last two 
-    random_book = choice(all_books)
+    random_book = choice(all_books) if all_books else None
     ctx = {'random_book':random_book,
            'top_two_news':top_two_news}
     return render(request,'index.html',ctx)
